@@ -63,6 +63,10 @@ def remove_components(to_remove, components):
     return components.drop(components.columns[[r - 1 for r in to_remove]], axis=1)
 
 
+def remove_time_from_df(df):
+    return df.drop(df.columns[0], axis=1)
+
+
 def save_cleaned_data_to_file(cleaned_data, filepath):
     cleaned_df = pd.DataFrame(cleaned_data)
     cleaned_df.to_csv(filepath, index=False, header=False, sep=';')
@@ -82,8 +86,12 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-
     df = read_data_from_csv_file(args.source)
+
+    if args.t and (args.s or args.n is not None):
+        df = remove_time_from_df(df)
+        args.t = False
+
     time_df, eeg_data = prepare_input_dataframe(df, args.t, args.s, args.n)
     make_oscillogram_from_data(time_df, eeg_data, args.d, "input")
     components = fast_ica(eeg_data)

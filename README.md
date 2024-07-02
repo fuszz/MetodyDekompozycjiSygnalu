@@ -15,7 +15,7 @@ Projekt zaliczeniowy z przedmiotu Metody Dekompozycji Sygnału
 ## Uruchomienie skryptu
 
 ```
-python3 ica.py PLIK_WEJŚCIOWY PLIK_WYJŚCIOWY [OPCJE]
+python3 ica.py [OPCJE] PLIK_WEJŚCIOWY PLIK_WYJŚCIOWY 
 
 
 Poddaje dane dostarczone w PLIK_WEJŚCIOWY analizie niezależnych składowych (ICA)
@@ -35,19 +35,19 @@ Jeśli plik nie zawiera timestampów, a nie zostaną podane oba -s i -n, używan
 
 ### Przykłady
 ```commandline
-python3 ica.py -i dane.csv -o komponenty.csv -d oscylogram_danych.png -c oscylogram_komponentow.png -n 100
+python3 ica.py -d oscylogram_danych.png -c oscylogram_komponentow.png -n 100 dane.csv komponenty.csv 
 ```
 
 Poddaje analizie ICA 100 pierwszych próbek z pliku dane.csv, który nie zawiera timestampów, zatem (brak podanego -s), traktuje je 
 jako odległe o 0.01 s.
 
 ```commandline
-python3 ica.py -i dane.csv -o komponenty.csv -d oscylogram_danych.png -c oscylogram_komponentow.png -t -n 100
+python3 ica.py -d oscylogram_danych.png -c oscylogram_komponentow.png -t -n 100 dane.csv komponenty.csv 
 ```
 
 Jak wyżej, ale timestampy są ignorowane
 
 ```commandline
-python3 ica.py -i dane.csv -o komponenty.csv -d oscylogram_danych.png -c oscylogram_komponentow.png -t
+python3 ica.py -d oscylogram_danych.png -c oscylogram_komponentow.png -t dane.csv komponenty.csv 
 ```
 Wartości częstotliwości i próbkowania są czytane z zawartości pliku.

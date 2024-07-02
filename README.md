@@ -18,8 +18,6 @@ Projekt zaliczeniowy z przedmiotu Metody Dekompozycji Sygnału
 python3 ica.py PLIK_WEJŚCIOWY PLIK_WYJŚCIOWY [OPCJE]
 
 
-**OPIS**
-
 Poddaje dane dostarczone w PLIK_WEJŚCIOWY analizie niezależnych składowych (ICA)
 
  -t - wskazanie, że w pliku wejściowym pierwsza kolumna danych to czas. Brak oznacza brak takiej kolumny
